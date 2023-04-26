@@ -1,12 +1,16 @@
 import React from "react";
-import Navbar from "../components/Navbar";
+import Brand from "../components/Brand";
 import Hero from "../components/Hero";
+import Watch from "./Watch";
+import Type from "../components/Typed";
 
 export default function Home() {
   return (
     <>
-      <Navbar />
       <Hero />
+      <Brand />
+      <Watch />
+      <Type />
     </>
   );
 }

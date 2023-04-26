@@ -1,15 +1,17 @@
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import Brand from "./components/Brand";
-import Footer from "./components/Footer";
 import Home from "./pages/Home";
+import RootLayout from "./layout/RootLayout";
+import Watch from "./pages/Watch";
 
 function App() {
   return (
-    <div className="App">
-      <Home />
-      <Brand />
-      <Footer />
-    </div>
+    <Routes>
+      <Route path="/" element={<RootLayout />}>
+        <Route index element={<Home />}/>
+        <Route path="/watch" element={<Watch />}/>
+      </Route>
+    </Routes>
   );
 }
 

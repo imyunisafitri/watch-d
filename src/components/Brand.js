@@ -3,10 +3,7 @@ import React from "react";
 export default function Brand() {
   return (
     <div className="container-lg">
-      <div className="flex p-4 text-white items-center justify-between">
-        <h1 className="text-white text-2xl fw-bold">Popular Brands</h1>
-        <h5 className="text-yellow-200">See More</h5>
-      </div>
+      <div className="p-4 text-white text-2xl text-center fw-bold my-5">Popular Brands</div>
       <div className="brand -mt-5 p-4 text-white">
         <div className="row align-items-center justify-center">
           <div className="col-3 col-md-2 mb-2">
