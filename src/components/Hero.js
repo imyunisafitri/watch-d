@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link} from "react-router-dom";
 
 export default function Hero() {
   return (
@@ -17,10 +17,10 @@ export default function Hero() {
           <p className="text-xl hidden md:block">
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
           </p>
-          <div>
-            <NavLink to="register" className="md:hidden px-6 py-2 rounded-full text-white  border-dotted border-2 cursor-pointer hover:border-solid">
+          <div className="cursor-pointer">
+            <Link to="/register" className="md:hidden px-6 py-2 rounded-full text-white  border-dotted border-2 cursor-pointer hover:border-solid">
               Register Now
-            </NavLink>
+            </Link>
           </div>
         </div>
       </div>

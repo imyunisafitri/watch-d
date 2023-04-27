@@ -6,6 +6,8 @@ import Watch from "./pages/Watch";
 import Dashboard from "./pages/Dashboard";
 import Gallery from "./pages/Gallery";
 import ContactUs from "./pages/ContactUs";
+import Login from "./components/Login";
+import Register from "./components/Register";
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
         <Route path="dashboard" element={<Dashboard />} />
         <Route path="gallery" element={<Gallery />} />
         <Route path="contact" element={<ContactUs />} />
+        <Route path="login" element={<Login />} />
+        <Route path="register" element={<Register />} />
       </Route>
     </Routes>
   );
