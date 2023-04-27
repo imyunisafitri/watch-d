@@ -9,6 +9,7 @@ import {
   AiOutlineTwitter,
 } from "react-icons/ai";
 import { FaTiktok } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
@@ -36,20 +37,20 @@ export default function Footer() {
                 Application Now and Enjoy Unlimited Benefits!
               </p>
               <div className="app">
-                <a href="#">
+                <Link href="#">
                   <img
                     src="https://cdn.eraspace.com/pub/media/wysiwyg/footer/Ic_Apple_App_Store.png"
                     alt="appstore"
                     className="img-fluid mb-2"
                   />
-                </a>
-                <a href="#">
+                </Link>
+                <Link href="#">
                   <img
                     src="https://cdn.eraspace.com/pub/media/wysiwyg/footer/Ic_Google_Play_Store.png"
                     alt="playstore"
                     className="img-fluid"
                   />
-                </a>
+                </Link>
               </div>
             </div>
           </div>

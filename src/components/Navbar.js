@@ -22,7 +22,7 @@ const Navbar = () => {
           className={`${
             scroll && window.innerWidth > 768
               ? "md:rounded-3xl backdrop-filter backdrop-blur-xl"
-              : "bg-black"
+              : "bg-[#000f0f]"
           } flex items-center justify-between max-w-[1024px] mx-auto p-4 py-2 text-white transition-all ease-in-out duration-300`}
         >
           <h1 className="text-dark-300 text-3xl uppercase fw-bold">depot</h1>
