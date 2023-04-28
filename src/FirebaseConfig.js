@@ -3,12 +3,12 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCWHNbWO2ESaxczGZA_5iFvtDVZHGZSK-Q",
-  authDomain: "watch-ceb7d.firebaseapp.com",
-  projectId: "watch-ceb7d",
-  storageBucket: "watch-ceb7d.appspot.com",
-  messagingSenderId: "77409951729",
-  appId: "1:77409951729:web:364fbcbe499311f862ee50"
+  apiKey: process.env.REACT_APP_apiKey,
+  authDomain: process.env.REACT_APP_authDomain,
+  projectId: process.env.REACT_APP_projectId,
+  storageBucket: process.env.REACT_APP_storageBucket,
+  messagingSenderId: process.env.REACT_APP_messagingSenderId,
+  appId: process.env.REACT_APP_appId,
 };
 
 // Initialize Firebase
