@@ -121,7 +121,11 @@ const Login = () => {
             <div className="flex justify-between w-full mt-8">
               <button
                 type="button"
-                onClick={() => signInWithGoogle()}
+                onClick={() =>
+                  signInWithGoogle().then(() => {
+                    navigate(from, { replace: true });
+                  })
+                }
                 className="bg-red-500 hover:bg-red-700 text-white py-2 px-4 rounded flex items-center justify-center w-1/2 mr-2"
               >
                 <FaGoogle className="mr-2" />
@@ -129,7 +133,11 @@ const Login = () => {
               </button>
               <button
                 type="button"
-                onClick={() => signInWithGithub()}
+                onClick={() =>
+                  signInWithGithub().then(() => {
+                    navigate(from, { replace: true });
+                  })
+                }
                 className="bg-gray-800 hover:bg-gray-700 text-white py-2 px-4 rounded flex items-center justify-center w-1/2 ml-2"
               >
                 <FaGithub className="mr-2" />
