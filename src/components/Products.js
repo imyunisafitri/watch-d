@@ -5,14 +5,14 @@ import { Link } from "react-router-dom";
 
 export default function Products() {
   const data = FetchData();
-  console.log(data);
+  // console.log(data);
 
   return (
     <div className="row g-4 gutter-1 mt-3 mb-5 p-4 justify-center">
       {data.length > 0 &&
         data.map((data) => (
           <div key={data.id} className="mx-3 col-10 col-md-2 p-3 rounded-lg bg-[#181818] shadow-lg">
-            <Link to={data.id.toString()}>
+            <Link to={`/products/${data.id}`}>
               <div>
                 <div className="border-b border-yellow-500 my-2">
                   <img

@@ -1,10 +1,40 @@
 import React, { useState } from "react";
 import loginIlustration from "./70.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import {
+  useCreateUserWithEmailAndPassword,
+  useUpdateProfile,
+  useSignOut,
+} from "react-firebase-hooks/auth";
+import auth from "../FirebaseConfig";
 
 const Register = () => {
+  const navigate = useNavigate();
+  const [updateProfile] = useUpdateProfile(auth);
+  const [displayName, setDisplayName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [createUserWithEmailAndPassword, user, loading, error] =
+    useCreateUserWithEmailAndPassword(auth);
+  const [signOut] = useSignOut(auth);
+
+  if (error) {
+    return (
+      <div>
+        <p>Error: {error.message}</p>
+      </div>
+    );
+  }
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+  if (user && user.user) {
+    return (
+      <div>
+        <p>Registered User: {user.user.email}</p>
+      </div>
+    );
+  }
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -15,9 +45,28 @@ const Register = () => {
   };
 
   const handleRegister = () => {
-    // Your login logic goes here
+    createUserWithEmailAndPassword(email, password)
+      .then(() => {
+        handleUpdateProfile(displayName);
+        console.log(user);
+        setDisplayName("");
+        signOut();
+        navigate("/login");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
+  const handleUpdateProfile = (name) => {
+    updateProfile({ displayName: name })
+      .then(() => {
+        console.log("profile updated");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   return (
     <div className="h-screen flex justify-center items-center bg-black">
@@ -30,6 +79,17 @@ const Register = () => {
             Register to see product details
           </h2>
           <form className="flex flex-col items-center">
+            <div className="mb-4 w-full">
+              <input
+                type="text"
+                id="name"
+                name="name"
+                value={displayName}
+                onChange={(e) => setDisplayName(e.target.value)}
+                className="w-full bg-gray-800 text-white py-2 px-3 rounded-lg text-md"
+                placeholder="Input your name"
+              />
+            </div>
             <div className="mb-4 w-full">
               <input
                 type="email"
@@ -64,7 +124,6 @@ const Register = () => {
               <p className="text-gray-400 font-bold">Sign In</p>
               <hr className="border-gray-400 border-1 w-20 ml-4" />
             </Link>
-            
           </form>
         </div>
       </div>

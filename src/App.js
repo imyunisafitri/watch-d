@@ -8,6 +8,9 @@ import Gallery from "./pages/Gallery";
 import ContactUs from "./pages/ContactUs";
 import Login from "./components/Login";
 import Register from "./components/Register";
+import Products from "./components/Products";
+import ProductDetails from "./components/ProductDetails";
+import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
   return (
@@ -20,6 +23,17 @@ function App() {
         <Route path="contact" element={<ContactUs />} />
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
+        <Route path="products">
+          <Route index element={<Products />} />
+          <Route
+            path=":id"
+            element={
+              <PrivateRoute>
+                <ProductDetails />
+              </PrivateRoute>
+            }
+          />
+        </Route>
       </Route>
     </Routes>
   );

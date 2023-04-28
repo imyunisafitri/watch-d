@@ -1,17 +1,14 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: process.env.REACT_APP_apiKey,
-  authDomain: process.env.REACT_APP_authDomain,
-  projectId: process.env.REACT_APP_projectId,
-  storageBucket: process.env.REACT_APP_storageBucket,
-  messagingSenderId: process.env.REACT_APP_messagingSenderId,
-  appId: process.env.REACT_APP_appId,
+  apiKey: "AIzaSyCWHNbWO2ESaxczGZA_5iFvtDVZHGZSK-Q",
+  authDomain: "watch-ceb7d.firebaseapp.com",
+  projectId: "watch-ceb7d",
+  storageBucket: "watch-ceb7d.appspot.com",
+  messagingSenderId: "77409951729",
+  appId: "1:77409951729:web:364fbcbe499311f862ee50"
 };
 
 // Initialize Firebase

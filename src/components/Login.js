@@ -1,30 +1,65 @@
 import React, { useState } from "react";
 import { FaGoogle, FaGithub } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import loginIlustration from "./70.png";
+import {
+  useSendPasswordResetEmail,
+  useSignInWithEmailAndPassword,
+  useSignInWithGithub,
+  useSignInWithGoogle,
+} from "react-firebase-hooks/auth";
+import auth from "../FirebaseConfig";
 
 const Login = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [signInWithEmailAndPassword, user, loading, error] = useSignInWithEmailAndPassword(auth);
+  const [sendPasswordResetEmail] = useSendPasswordResetEmail(auth);
+  const [signInWithGoogle] = useSignInWithGoogle(auth);
+  const [signInWithGithub] = useSignInWithGithub(auth);
+  const location = useLocation();
 
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-  };
+  const from = location.state?.from?.pathname || "/";
 
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-  };
+  if (error) {
+    return (
+      <div>
+        <p>Error: {error.message}</p>
+      </div>
+    );
+  }
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+  if (user) {
+    return (
+      <div>
+        <p>Signed In User: {user.email}</p>
+      </div>
+    );
+  }
 
   const handleLogin = () => {
-    // Your login logic goes here
+    signInWithEmailAndPassword(email, password)
+      .then(() => {
+        console.log(user);
+        console.log("you are logged in");
+        navigate("/");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
-  const handleGoogleLogin = () => {
-    // Your Google login logic goes here
-  };
-
-  const handleGithubLogin = () => {
-    // Your Github login logic goes here
+  const handleResetPassword = async () => {
+    try {
+      await sendPasswordResetEmail(email);
+      alert("Password reset email sent!");
+    } catch (error) {
+      console.log(error);
+      alert(error.message);
+    }
   };
 
   return (
@@ -44,7 +79,7 @@ const Login = () => {
                 id="email"
                 name="email"
                 value={email}
-                onChange={handleEmailChange}
+                onChange={(e) => setEmail(e.target.value)}
                 className="w-full bg-gray-800 text-white py-2 px-3 rounded-lg text-md"
                 placeholder="Input your Email"
               />
@@ -55,15 +90,18 @@ const Login = () => {
                 id="password"
                 name="password"
                 value={password}
-                onChange={handlePasswordChange}
+                onChange={(e) => setPassword(e.target.value)}
                 className="w-full bg-gray-800 text-white py-2 px-3 rounded-lg"
                 placeholder="Input your password"
               />
             </div>
             <div className="flex justify-between w-full -mt-2">
-              <Link href="/reset-password" className="text-white text-sm hover:text-yellow-500">
+              <button
+                className="text-white text-sm hover:text-yellow-500"
+                onClick={handleResetPassword}
+              >
                 Reset Password
-              </Link>
+              </button>
               <Link to="/register" className="text-white text-sm hover:text-yellow-500">
                 Register
               </Link>
@@ -83,7 +121,11 @@ const Login = () => {
             <div className="flex justify-between w-full mt-8">
               <button
                 type="button"
-                onClick={handleGoogleLogin}
+                onClick={() =>
+                  signInWithGoogle().then(() => {
+                    navigate(from, { replace: true });
+                  })
+                }
                 className="bg-red-500 hover:bg-red-700 text-white py-2 px-4 rounded flex items-center justify-center w-1/2 mr-2"
               >
                 <FaGoogle className="mr-2" />
@@ -91,7 +133,11 @@ const Login = () => {
               </button>
               <button
                 type="button"
-                onClick={handleGithubLogin}
+                onClick={() =>
+                  signInWithGithub().then(() => {
+                    navigate(from, { replace: true });
+                  })
+                }
                 className="bg-gray-800 hover:bg-gray-700 text-white py-2 px-4 rounded flex items-center justify-center w-1/2 ml-2"
               >
                 <FaGithub className="mr-2" />
