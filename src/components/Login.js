@@ -9,6 +9,7 @@ import {
   useSignInWithGoogle,
 } from "react-firebase-hooks/auth";
 import auth from "../FirebaseConfig";
+// import { GithubAuthProvider } from "firebase/auth";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -19,6 +20,7 @@ const Login = () => {
   const [signInWithGoogle] = useSignInWithGoogle(auth);
   const [signInWithGithub] = useSignInWithGithub(auth);
   const location = useLocation();
+  // const provider = new GithubAuthProvider();
 
   const from = location.state?.from?.pathname || "/";
 
