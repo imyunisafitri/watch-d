@@ -7,9 +7,9 @@ export default function Reviews() {
     <section id="pricing" className="mt-5 py-5">
       <div className="container-lg">
         <div className="text-center text-white">
-          <h2 className="text-2xl fw-bold">What Our Customer Said</h2>
-          <p className="lead text-muted">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eum, fugiat!
+          <h2 className="text-2xl font-bold">Hear What Our Customers Are Raving About</h2>
+          <p className="lead text-gray-300">
+            Discover Why Watch Enthusiasts Can't Get Enough of The Depot's Stunning Collection!
           </p>
         </div>
 
@@ -21,7 +21,9 @@ export default function Reviews() {
                   src={randomImageUrl}
                   className="w-25 h-25 object-cover rounded-full mx-auto mb-4"
                 />
-                <Card.Title as="h6" className="text-white fw-semibold">KAGEYAMA</Card.Title>
+                <Card.Title as="h6" className="text-white fw-semibold">
+                  KAGEYAMA
+                </Card.Title>
                 <Card.Subtitle className="lead text-yellow-500 fw-bold">4/5</Card.Subtitle>
                 <Card.Text className="mx-4 text-muted my-3 text-slate-200">
                   <p>Great product, would definitely recommend!</p>
@@ -37,7 +39,9 @@ export default function Reviews() {
                   src={randomImageUrl}
                   className="w-25 h-25 object-cover rounded-full mx-auto mb-4"
                 />
-                <Card.Title as="h6" className="text-white fw-semibold">SHOYO HINATA</Card.Title>
+                <Card.Title as="h6" className="text-white fw-semibold">
+                  SHOYO HINATA
+                </Card.Title>
                 <Card.Subtitle className="lead text-yellow-500 fw-bold">4/5</Card.Subtitle>
                 <Card.Text className="mx-4 text-muted my-3">
                   <p>Good quality and fast delivery.</p>
@@ -53,7 +57,9 @@ export default function Reviews() {
                   src={randomImageUrl}
                   className="w-25 h-25 object-cover rounded-full mx-auto mb-4"
                 />
-                <Card.Title as="h6" className="text-white fw-semibold">KAGEYAMA</Card.Title>
+                <Card.Title as="h6" className="text-white fw-semibold">
+                  KAGEYAMA
+                </Card.Title>
                 <Card.Subtitle className="lead text-yellow-500 fw-bold">5/5</Card.Subtitle>
                 <Card.Text className="mx-4 text-muted my-3">
                   <p>Not what I expected, but customer service was excellent</p>

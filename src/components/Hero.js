@@ -1,4 +1,4 @@
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function Hero() {
   return (
@@ -11,14 +11,17 @@ export default function Hero() {
         />
         Your browser does not support the video tag
       </video>
-      <div className="absolute top-1/2 w-full">
+      <div className="absolute top-1/4 md:top-1/2 w-full">
         <div className="text-white text-center">
-          <h1 className="text-3xl fw-bolder mb-4">FIELD OTOMATIC</h1>
-          <p className="text-xl hidden md:block">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          <h1 className="text-xl md:text-3xl font-bold mb-4">Explore the Field Otomatic</h1>
+          <p className="text-sm md:text-xl">
+            Discover the epitome of sophistication and innovation in the Field Otomatic collection.
           </p>
-          <div className="cursor-pointer">
-            <Link to="/register" className="md:hidden px-6 py-2 rounded-full text-white  border-dotted border-2 cursor-pointer hover:border-solid">
+          <div className="cursor-pointer mt-4">
+            <Link
+              to="/register"
+              className="md:hidden px-6 py-2 rounded-full text-white  border-dotted border-2 cursor-pointer hover:border-solid"
+            >
               Register Now
             </Link>
           </div>
